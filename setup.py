@@ -5,13 +5,13 @@ with open('README.md','r') as f:
 
 setuptools.setup(
     name="easytalk",
-    version="0.1",
+    version="1.0",
     author="Lucino772",
     author_email="lucapalmi772@gmail.com",
     description="Easy communication between everything !!",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    # url="https://github.com/Lucino772/service_lib",
+    url="https://github.com/Lucino772/easytalk",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

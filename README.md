@@ -1,10 +1,12 @@
 # EasyTalk
 
-**EasyTalk**  makes communication **easier** between sub-process or even sockets.
+**EasyTalk**  makes communication **easier** between subprocess or even sockets.
+
 It's very easy to use and simple to understand.
 
 # Installation
 The package will be soon available on PyPi but for now you must install it from the github repo for that you will need git.
+
 You will also need python 3.6+.
 
 ```
@@ -32,7 +34,7 @@ stream_obj = Stream.from_sys()
 # From socket
 stream_obj = Stream.from_sock(socket_obj)
 
-# From sub-process
+# From subprocess
 stream_obj = Stream.from_subprocess(popen_obj)
 ```
 **Send data**
@@ -86,4 +88,4 @@ print(response)
 [Go check the examples](https://github.com/Lucino772/easytalk/tree/master/examples)
 
 # Reporting bugs
-If you find any bug in Codespeed please report it on the [Github issue tracker](https://github.com/Lucino772/easytalk/issues)
+If you find any bug in EasyTalk please report it on the [Github issue tracker](https://github.com/Lucino772/easytalk/issues)

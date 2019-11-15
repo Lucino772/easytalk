@@ -1,5 +1,6 @@
 
 def to_bits(_bytes: bytes) -> list:
+    """Convert bytes to a bit list"""
     bits = []
     offset = 0
     for byte in _bytes:
@@ -9,6 +10,7 @@ def to_bits(_bytes: bytes) -> list:
     return bits
 
 def from_bits(bits: list) -> bytes:
+    """Convert bit list to bytes"""
     if not len(bits) % 8 == 0:
         print('Invalid bits length !')
         return b''
@@ -21,6 +23,7 @@ def from_bits(bits: list) -> bytes:
     return _bytes
 
 def shuffle(bits: list) -> list:
+    """Take 2 bits and swich their position in the list"""
     if not len(bits) % 8 == 0:
         print('Invalid bits length !')
         return []
@@ -34,6 +37,7 @@ def shuffle(bits: list) -> list:
     return _bits
 
 def as_string(bits: list) -> str:
+    """Join all the bits from a list into a string"""
     if not len(bits) % 8 == 0:
         print('Invalid bits length !')
         return ''
@@ -44,3 +48,11 @@ def as_string(bits: list) -> str:
         parts.append(''.join(map(lambda x: str(x), _8bits)))
         offset += 8
     return ' '.join(map(lambda x: str(x), parts))
+
+def encode(_bytes: bytes) -> bytes:
+    """Encode bytes"""
+    return from_bits(shuffle(to_bits(_bytes)))
+
+def decode(_bytes: bytes) -> bytes:
+    """Decode bytes"""
+    return from_bits(shuffle(to_bits(_bytes)))

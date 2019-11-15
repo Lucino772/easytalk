@@ -8,7 +8,7 @@ setuptools.setup(
     version="1.0",
     author="Lucino772",
     author_email="lucapalmi772@gmail.com",
-    description="Easy communication between everything !!",
+    description="Easy communication between socket and sub-process",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Lucino772/easytalk",

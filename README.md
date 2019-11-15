@@ -65,7 +65,7 @@ stream_obj = Stream(input_stream,output_stream)
 item_obj = Item(stream_obj)
 ```
 The Item object gives you 2 more advanced functionnalities:
---- Listen for data
+- Listen for data
 ```
 def on_data(msg_id,msg):
 	# Do something
@@ -73,7 +73,7 @@ def on_data(msg_id,msg):
 
 item_obj.listen(on_data=on_data)
 ```
---- Send and directly receive the response
+- Send and directly receive the response
 ```
 ! You must be listening for data if you want this to work !
 

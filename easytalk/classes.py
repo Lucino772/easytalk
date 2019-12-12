@@ -121,9 +121,9 @@ class Item:
                             _bytes.extend(resp)
                             _bytes = bytes(_bytes)
                             self.__stream.send(_bytes)
-             except Exception as err:
-                 if callable(on_error):
-                     on_error(repr(err))
+            except Exception as err:
+                if callable(on_error):
+                    on_error(repr(err))
         th = Thread(target=listener,daemon=True)
         th.start()
 

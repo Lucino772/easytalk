@@ -114,16 +114,16 @@ class Item:
                             self.__messages[msg_id] = {'data': msg}
                         elif callable(on_data):
                             resp = on_data(self.__id,msg)
+                            if not resp:
+                                resp = bytes()
                             _bytes = bytearray()
                             _bytes.extend(msg_id.encode('utf-8'))
                             _bytes.extend(resp)
                             _bytes = bytes(_bytes)
                             self.__stream.send(_bytes)
-            finally:
-                pass
-#             except Exception as err:
-#                 if callable(on_error):
-#                     on_error(repr(err))
+             except Exception as err:
+                 if callable(on_error):
+                     on_error(repr(err))
         th = Thread(target=listener,daemon=True)
         th.start()
 

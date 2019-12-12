@@ -106,6 +106,7 @@ class Item:
                 while True:
                     data = self.__stream.recv()
                     # Read message id
+                    print(data)
                     if len(data) > 36:
                         msg_id = data[:36].decode('utf-8')
                         msg = data[36:]

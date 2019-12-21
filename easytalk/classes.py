@@ -82,7 +82,7 @@ class Item:
         # Create message
         _bytes = bytearray()
         _bytes.extend(msg_id.encode('utf-8'))
-        _bytes.extend(channel.to_bytes(4,'big'))
+        _bytes.extend(channel.to_bytes(1,'big'))
         _bytes.extend(data)
         _bytes = bytes(_bytes)
         # Register message
@@ -109,8 +109,8 @@ class Item:
                     # Read message id
                     if len(data) > 36:
                         msg_id = data[:36].decode('utf-8')
-                        channel = int.from_bytes(data[36:40],'big')
-                        msg = data[40:]
+                        channel = int.from_bytes(data[36:37],'big')
+                        msg = data[37:]
                         if msg_id in self.__messages.keys():
                             self.__messages[msg_id] = {'data': msg,'channel': channel}
                         elif callable(on_data):
@@ -119,7 +119,7 @@ class Item:
                                 resp = bytes()
                             _bytes = bytearray()
                             _bytes.extend(msg_id.encode('utf-8'))
-                            _bytes.extend(channel.to_bytes(4,'big'))
+                            _bytes.extend(channel.to_bytes(1,'big'))
                             _bytes.extend(resp)
                             _bytes = bytes(_bytes)
                             self.__stream.send(_bytes)

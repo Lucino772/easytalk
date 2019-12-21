@@ -4,7 +4,7 @@ from easytalk import Stream, Item
 
 
 # Callback for incoming data
-def on_data(msg_id: str,data: bytes):
+def on_data(msg_id: str,data: bytes,channel: int):
     # Do somthing with data
     return b'Hello World !' # Return a response
 

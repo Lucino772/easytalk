@@ -5,8 +5,8 @@ from subprocess import Popen, PIPE
 from easytalk import Stream, Item
 
 # Callback for incoming data
-def on_data(msg_id: str,data: bytes):
-    print(msg_id,data) # Do somthing with data
+def on_data(msg_id: str,data: bytes,channel: int):
+    print(msg_id,data,channel) # Do somthing with data
 
 # Callback for error (normally means that the stream is closed)
 def on_error(error):

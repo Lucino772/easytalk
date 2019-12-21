@@ -77,11 +77,12 @@ class Item:
     def get_id(self):
         return self.__id
     
-    def send(self,data: bytes,response=False,timeout=5):
+    def send(self,data: bytes,channel=0,response=False,timeout=5):
         msg_id = str(uuid.uuid1())
         # Create message
         _bytes = bytearray()
         _bytes.extend(msg_id.encode('utf-8'))
+        _bytes.extend(channel.to_bytes(4,'big'))
         _bytes.extend(data)
         _bytes = bytes(_bytes)
         # Register message
@@ -108,15 +109,17 @@ class Item:
                     # Read message id
                     if len(data) > 36:
                         msg_id = data[:36].decode('utf-8')
-                        msg = data[36:]
+                        channel = int.from_bytes(data[36:40],'big')
+                        msg = data[40:]
                         if msg_id in self.__messages.keys():
-                            self.__messages[msg_id] = {'data': msg}
+                            self.__messages[msg_id] = {'data': msg,'channel': channel}
                         elif callable(on_data):
-                            resp = on_data(self.__id,msg)
+                            resp = on_data(self.__id,msg,channel)
                             if not resp:
                                 resp = bytes()
                             _bytes = bytearray()
                             _bytes.extend(msg_id.encode('utf-8'))
+                            _bytes.extend(channel.to_bytes(4,'big'))
                             _bytes.extend(resp)
                             _bytes = bytes(_bytes)
                             self.__stream.send(_bytes)

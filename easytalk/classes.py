@@ -107,7 +107,7 @@ class Item:
                 while True:
                     data = self.__stream.recv()
                     # Read message id
-                    if len(data) > 36:
+                    if len(data) > 37:
                         msg_id = data[:36].decode('utf-8')
                         channel = int.from_bytes(data[36:37],'big')
                         msg = data[37:]
